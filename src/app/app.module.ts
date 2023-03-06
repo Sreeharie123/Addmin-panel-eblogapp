@@ -9,12 +9,14 @@ import { DashbordComponent } from './dashbord/dashbord.component';
 import {environment}from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
+import { CategoriesComponent } from './categories/categories.component';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    DashbordComponent
+    DashbordComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,
