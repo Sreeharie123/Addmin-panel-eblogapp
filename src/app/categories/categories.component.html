@@ -1,12 +1,23 @@
-
-
-<div class="flex flex-col items-center gap-12 mt-10">
-  <div class="flex flex-col gap-1 justify-center items-center px-4 py-4">
-    <p class="text-5xl text-gray-600">New Categories</p>
-    <p class="text-lg text-gray-500">You can add new categories from here ...!</p>
-  </div>
-  <div class="flex gap-6">
-    <input type="text" class="w-[75rem] h-16 shadow-sm bg-slate-100 border rounded px-4">
-    <button class="w-fit h-fit px-8 py-5 bg-gradient-to-r from-teal-700 to-[#052d70] text-white rounded-lg text-xl">Add Category</button>
+<div class="md:px-48 md:pt-10 px-8">
+  <div
+    class="flex flex-col items-center md:gap-6 mt-10 bg-slate-100 shadow-inner py-14 rounded-lg"
+  >
+    <div class="flex flex-col gap-1 justify-center items-center px-4 py-4">
+      <p class="md:text-5xl text-3xl text-gray-600">New Categories</p>
+      <p class="md:text-lg text-gray-500">
+        You can add new categories from here ...!
+      </p>
+    </div>
+    <form class="flex gap-6 flex-col md:flex-row justify-center items-center" #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm )">
+      <input
+        type="text" name="category"
+        class="md:w-[75rem] h-16 border shadow-inner rounded px-4" placeholder="Add a new item" ngModel
+      />
+      <button
+        class="w-fit h-fit md:px-8 px-6 py-4 md:py-5 bg-gradient-to-r from-teal-700 to-[#052d70] text-white rounded-lg md:text-xl"
+      >
+        Add Category
+      </button>
+    </form>
   </div>
 </div>
