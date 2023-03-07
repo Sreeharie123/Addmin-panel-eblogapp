@@ -9,7 +9,9 @@ import {environment}from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
 import { CategoriesComponent } from './categories/categories.component';
+import {ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,8 +25,9 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,
-    FormsModule
-
+    FormsModule,
+    ToastrModule.forRoot(),
+    BrowserAnimationsModule
 
   ],
   providers: [],
