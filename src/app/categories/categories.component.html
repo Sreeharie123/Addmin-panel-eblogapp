@@ -8,16 +8,60 @@
         You can add new categories from here ...!
       </p>
     </div>
-    <form class="flex gap-6 flex-col md:flex-row justify-center items-center" #categoryForm="ngForm" (ngSubmit)="onSubmit(categoryForm )">
+    <form
+      class="flex gap-2 flex-col md:flex-col justify-center items-center"
+      #categoryForm="ngForm"
+      (ngSubmit)="onSubmit(categoryForm)"
+    >
       <input
-        type="text" name="category"
-        class="md:w-[75rem] h-16 border shadow-inner rounded px-4" placeholder="Add a new item" ngModel
+        type="text"
+        name="category"
+        class="md:w-[75rem] h-16 border shadow-inner rounded px-4"
+        placeholder="Add a new item"
+        #newcategory="ngModel"
+        required
+        ngModel
+        [ngClass]="{
+          'border border-red-400 text-red-700':
+            newcategory.touched && newcategory.invalid
+        }"
       />
+      <div
+        class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative w-full"
+        role="alert"
+        *ngIf="newcategory.touched && newcategory.invalid"
+      >
+        <strong class="font-bold">Invalid category</strong>
+        <span class="block sm:inline">Please enter the valid category.</span>
+        <span class="absolute top-0 bottom-0 right-0 px-4 py-3">
+          <svg
+            class="fill-current h-6 w-6 text-red-500"
+            role="button"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <title>Close</title>
+            <path
+              d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"
+            />
+          </svg>
+        </span>
+      </div>
+
       <button
-        class="w-fit h-fit md:px-8 px-6 py-4 md:py-5 bg-gradient-to-r from-teal-700 to-[#052d70] text-white rounded-lg md:text-xl"
+        *ngIf="categoryForm.invalid; else success"
+        class="w-fit h-fit md:px-8 px-6 py-4 md:py-5 bg-gradient-to-r from-teal-700 to-[#5c626d] text-white rounded-lg md:text-xl"
+        [disabled]="categoryForm.invalid"
       >
         Add Category
       </button>
+      <ng-template #success>
+        <button
+          class="w-fit h-fit md:px-8 px-6 py-4 md:py-5 bg-gradient-to-r from-teal-700 to-[#12428f] text-white rounded-lg md:text-xl"
+        >
+          Add Category
+        </button>
+      </ng-template>
     </form>
   </div>
 </div>

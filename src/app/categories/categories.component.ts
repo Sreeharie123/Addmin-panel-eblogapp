@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { CategoriesService } from '../services/categories.service';
 
 @Component({
   selector: 'app-categories',
@@ -7,22 +7,78 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
   styleUrls: ['./categories.component.scss'],
 })
 export class CategoriesComponent {
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private categoryService:CategoriesService ) {}
 
   onSubmit(formdata: any) {
+
+
     const categorydata = {
       category: formdata.value.category,
-    };
+    }
 
-    this.firestore
-      .collection('categories')
-      .add(categorydata)
-      .then((docRef) => {
-        console.log(docRef);
-        formdata.reset();
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+
+    this.categoryService.saveData(categorydata)
+
+
+
   }
+
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  // const subCategorydata = {
+    //   subCategory: 'subCategory1',
+    // };
+
+    // this.firestore.collection('categories').add(categorydata).then((docRef) => {
+    //   console.log(docRef);
+
+    //   // this.firestore.doc(`categories/${docRef.id}`).collection('subcategories').add(subCategorydata)
+    //     this.firestore.collection('categories').doc(docRef.id).collection('subcategories').add(subCategorydata).then(docref1=>{
+    //       console.log(docref1)
+    //     //  this.firestore.doc(`categories/${docRef.id}/subcategories/${docref1.id}`).collection("subsubcategory ").add(subCategorydata ).then(docref2=>{
+    //     //   console.log(docref2)
+    //     // })
+    //     this.firestore.collection('categories').doc(docRef.id).collection('subcategories').doc(docref1.id).collection('subsubcategories').add(subCategorydata).then((docRef2)=>{
+    //       console.log("Second level subcategory saved successfully")
+    //     })
+    //     // this.firestore.doc(`categories/${docRef.id}/subcategories/${docref1.id}/subsubcategory`).collection("subsubcategory ").add(subCategorydata ).then(docref2=>{
+    //     //   console.log(docref2)
+    //     // })
+
+    //     });
+
+    //   }).catch((err) => {
+    //     console.log(err);
+    //   });
