@@ -20,7 +20,7 @@
         placeholder="Add a new item"
         #newcategory="ngModel"
         required
-        ngModel
+        [(ngModel)]="formCategory"
         [ngClass]="{
           'border border-red-400 text-red-700':
             newcategory.touched && newcategory.invalid
@@ -38,7 +38,7 @@
             class="fill-current h-6 w-6 text-red-500"
             role="button"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20"
+            viewBox="0 0 20 20" (click)="close()"
           >
             <title>Close</title>
             <path
@@ -53,36 +53,48 @@
         class="w-fit h-fit md:px-8 px-6 py-4 md:py-5 bg-gradient-to-r from-teal-700 to-[#5c626d] text-white rounded-lg md:text-xl"
         [disabled]="categoryForm.invalid"
       >
-        Add Category
+        {{formStatus}} Category
       </button>
       <ng-template #success>
         <button
           class="w-fit h-fit md:px-8 px-6 py-4 md:py-5 bg-gradient-to-r from-teal-700 to-[#12428f] text-white rounded-lg md:text-xl"
         >
-          Add Category
+          {{formStatus}} Category
         </button>
       </ng-template>
     </form>
   </div>
 
-        <div class="md:px-20 md:py-10 bg-slate-100 shadow-inner mt-4 flex justify-center mb-4 rounded-lg">
-          <table class="rounded-md overflow-hidden bg-white shadow-inner">
-            <thead>
-             <tr class="border h-16">
-            <th class="bg-red-400 md:w-24 w-16 flex h-16 items-center pl-3 md:pl-10">No</th>
-            <th class="bg-green-400 md:w-96 w-36">Category</th>
-            <th class="bg-orange-400 md:w-72 w-36">Action</th>
-          </tr>
-          </thead>
-          <tbody>
-            <tr class="border h-16" *ngFor="let item of categoryArray, index as i">
-              <td class="border border-collapse md:w-24 w-16 flex h-16 items-center pl-3 md:pl-10">{{i+1}}</td>
-              <td class="border border-collapse md:w-96 w-36 md:pl-20">{{item.id}}</td>
-              <td class="border border-collapse md:w-72 w-36 md:pl-20">{{item.data.category}}</td>
-            </tr>
-
-          </tbody>
-
-          </table>
-        </div>
+  <div
+    class="md:px-20 md:py-10 bg-slate-100 shadow-inner mt-4 flex justify-center mb-4 rounded-lg"
+  >
+    <table class="rounded-md overflow-hidden bg-slate-50 shadow-inner">
+      <thead>
+        <tr class="border h-16">
+          <th
+            class="bg-red-400 md:w-24 w-16 flex h-16 items-center pl-3 md:pl-10"
+          >
+            No
+          </th>
+          <th class="bg-green-400 md:w-96 w-36">Category</th>
+          <th class="bg-orange-400 md:w-72 w-36">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border h-16" *ngFor="let item of categoryArray; index as i">
+          <td
+            class="border border-collapse md:w-24 w-16 flex h-16 items-center pl-3 md:pl-10"
+          >
+            {{ i + 1 }}
+          </td>
+          <td class="border border-collapse md:w-96 w-36 md:pl-20">
+            {{ item.data.category }}
+          </td>
+          <td class="border border-collapse md:w-72 w-36 md:pl-20">
+            <button class="w-fit h-fit bg-yellow-400 px-3 py-1 rounded-md text-black text-xl shadow-md" (click)="onEdit(item.data.category)">Edit</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 </div>

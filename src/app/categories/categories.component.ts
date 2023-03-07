@@ -11,6 +11,8 @@ export class CategoriesComponent implements OnInit {
   constructor(private categoryService: CategoriesService) {}
 
   categoryArray?:any
+  formCategory?:string
+  formStatus:string='Add'
 
   ngOnInit(): void {
     this.categoryService.logdata().subscribe((data) => {
@@ -20,11 +22,22 @@ export class CategoriesComponent implements OnInit {
     });
   }
 
+   close(){
+      location.reload()
+   }
+
   onSubmit(formdata: any) {
     const categorydata: Category = {
       category: formdata.value.category,
-    };
+    }
     this.categoryService.saveData(categorydata, formdata);
+  }
+
+
+  onEdit(value:string){
+     this.formCategory=value
+     this.formStatus="Edit"
+
   }
 }
 
