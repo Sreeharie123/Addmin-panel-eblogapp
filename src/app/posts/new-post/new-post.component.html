@@ -1,0 +1,91 @@
+<div class="px-48 py-10 bg-slate-800">
+  <div class="flex flex-col items-center gap-2 mb-5">
+    <p class="text-4xl font-serif text-green-500">Add New Post</p>
+    <p class="text-xl text-white">You can add your new posts</p>
+  </div>
+
+  <div class="w-full flex mb-12 p-5">
+    <div class="w-[42rem] flex flex-col gap-2">
+      <label for="title" class="font-sans text-lg text-white">Title</label>
+      <mat-form-field
+        class="example-form-field bg-white border border-slate-600"
+      >
+        <input
+          matInput
+          type="text"
+          [(ngModel)]="clear1"
+          class="h-12 bg-white border-none"
+          name="title"
+          (keyup)="onTitleChanged($event)"
+        />
+        <button
+          *ngIf="clear1"
+          matSuffix
+          mat-icon-button
+          aria-label="Clear"
+          (click)="clear1 = ''"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+
+      <label for="link" class="font-sans text-lg text-white">Permalink</label>
+
+      <input
+        matInput
+        type="text"
+        [(ngModel)]="permalink"
+        class="h-16 bg-white border-none"
+        name="permalink"
+        disabled
+      />
+
+      <label for="except" class="font-sans text-lg text-white">Except</label>
+      <input
+        type="text"
+        class="w-full h-64 rounded-md border border-slate-600"
+      />
+    </div>
+
+    <div class="flex-1 px-12 flex flex-col gap-2">
+      <label for="post category" class="font-sans text-lg text-white"
+        >Plese Select the post Category</label
+      >
+
+      <select
+        class="w-full h-[4.5rem] rounded-md border border-slate-600 bg-white"
+      >
+        <option value="" disabled>Hallo</option>
+      </select>
+      <label for="post image" class="font-sans text-lg text-white"
+        >Post Image</label
+      >
+      <input
+        type="file"
+        class="w-full h-[4.5rem] rounded-md border border-slate-600 bg-white"
+      />
+    </div>
+  </div>
+
+  <div class="p-5 flex flex-col gap-4">
+    <label for="content" class="font-sans text-lg text-white">Content</label>
+    <input
+      type="text"
+      name="content"
+      id="content"
+      class="h-72 bg-white w-full"
+    />
+    <div class="w-full flex gap-4 justify-center">
+      <button
+        class="w-fit h-fit bg-green-700 px-4 py-3 rounded-md text-white text-xl shadow-md"
+      >
+        Save Post
+      </button>
+      <button
+        class="w-fit h-fit bg-yellow-400 px-4 py-3 rounded-md text-black text-xl shadow-md"
+      >
+        Back to Post
+      </button>
+    </div>
+  </div>
+</div>

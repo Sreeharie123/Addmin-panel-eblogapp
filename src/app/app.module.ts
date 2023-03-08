@@ -12,13 +12,18 @@ import { CategoriesComponent } from './categories/categories.component';
 import {ToastrModule } from 'ngx-toastr';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AllPostComponent } from './posts/all-post/all-post.component';
+import { NewPostComponent } from './posts/new-post/new-post.component';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
     DashbordComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    AllPostComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
+    AngularMaterialModule
 
   ],
   providers: [],
