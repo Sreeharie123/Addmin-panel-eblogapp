@@ -20,7 +20,7 @@ export class CategoriesService {
         formdata.reset();
       })
       .catch((err) => {
-        console.log(err);
+        this.toastr.success(err.message);
       });
   }
 
@@ -37,5 +37,14 @@ export class CategoriesService {
           });
         })
       );
+  }
+
+
+  updateData(id:any,editedData:any){
+  this.firestore.collection("categories").doc(id).update(editedData ).then(docref=>{
+    this.toastr.success('Data updated Successfully ..!');
+    console.log(docref)
+  })
+
   }
 }
