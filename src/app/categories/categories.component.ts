@@ -31,19 +31,23 @@ export class CategoriesComponent implements OnInit {
       category: formdata.value.category,
     };
 
-    if (this.formStatus == 'Add'){
+    if (this.formStatus == 'Add') {
       this.categoryService.saveData(categorydata, formdata);
-    } else if(this.formStatus == 'Edit') {
+    } else if (this.formStatus == 'Edit') {
       this.categoryService.updateData(this.formId, categorydata);
-      formdata.reset()
-      this.formStatus="Add"
+      formdata.reset();
+      this.formStatus = 'Add';
     }
   }
 
-  onEdit(value: string, id: any) {
+  onEdit(value: string, id: string) {
     this.formCategory = value;
     this.formStatus = 'Edit';
     this.formId = id;
+  }
+
+  onDelete(id: string) {
+    this.categoryService.deleteData(id);
   }
 }
 

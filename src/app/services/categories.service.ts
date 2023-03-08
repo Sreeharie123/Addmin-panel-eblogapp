@@ -47,4 +47,10 @@ export class CategoriesService {
   })
 
   }
+
+  deleteData(id:string){
+ this.firestore.collection("categories").doc(id).delete().then(docref=>{
+    this.toastr.success('Data deleted Successfully ..!');
+ })
+  }
 }

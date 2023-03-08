@@ -3,9 +3,11 @@
     class="flex flex-col items-center md:gap-6 mt-10 bg-slate-100 shadow-inner py-14 rounded-lg"
   >
     <div class="flex flex-col gap-1 justify-center items-center px-4 py-4">
-      <p class="md:text-5xl text-3xl text-gray-600">{{formStatus}} Categories</p>
+      <p class="md:text-5xl text-3xl text-gray-600">
+        {{ formStatus }} Categories
+      </p>
       <p class="md:text-lg text-gray-500">
-        You can {{formStatus}} new categories from here ...!
+        You can {{ formStatus }} new categories from here ...!
       </p>
     </div>
     <form
@@ -38,7 +40,8 @@
             class="fill-current h-6 w-6 text-red-500"
             role="button"
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 20 20" (click)="close()"
+            viewBox="0 0 20 20"
+            (click)="close()"
           >
             <title>Close</title>
             <path
@@ -53,13 +56,13 @@
         class="w-fit h-fit md:px-8 px-6 py-4 md:py-5 bg-gradient-to-r from-teal-700 to-[#5c626d] text-white rounded-lg md:text-xl"
         [disabled]="categoryForm.invalid"
       >
-        {{formStatus}} Category
+        {{ formStatus }} Category
       </button>
       <ng-template #success>
         <button
           class="w-fit h-fit md:px-8 px-6 py-4 md:py-5 bg-gradient-to-r from-teal-700 to-[#12428f] text-white rounded-lg md:text-xl"
         >
-          {{formStatus}} Category
+          {{ formStatus }} Category
         </button>
       </ng-template>
     </form>
@@ -83,15 +86,28 @@
       <tbody>
         <tr class="border h-16" *ngFor="let item of categoryArray; index as i">
           <td
-            class="border border-collapse md:w-24 w-16 flex h-16 items-center pl-3 md:pl-10"
+            class="border border-collapse md:w-24 w-16 flex h-16 items-center pl-3 md:pl-10 border-none max-md:mt-4"
           >
             {{ i + 1 }}
           </td>
           <td class="border border-collapse md:w-96 w-36 md:pl-20">
             {{ item.data.category }}
           </td>
-          <td class="border border-collapse md:w-72 w-36 md:pl-20">
-            <button class="w-fit h-fit bg-yellow-400 px-3 py-1 rounded-md text-black text-xl shadow-md" (click)="onEdit(item.data.category,item.id)">Edit</button>
+          <td
+            class="border border-collapse md:w-72 w-36 md:pl-20 flex gap-2 border-none md:flex-row flex-col"
+          >
+            <button
+              class="w-fit h-fit bg-yellow-400 px-3 py-1 rounded-md text-black text-xl shadow-md"
+              (click)="onEdit(item.data.category, item.id)"
+            >
+              Edit
+            </button>
+            <button
+              class="w-fit h-fit bg-red-400 px-3 py-1 rounded-md text-black text-xl shadow-md"
+              (click)="onDelete(item.id)"
+            >
+              Delete
+            </button>
           </td>
         </tr>
       </tbody>
