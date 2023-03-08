@@ -1,11 +1,11 @@
-<div class="px-48 py-10 bg-slate-800">
+<div class="md:px-48 py-10 bg-slate-800">
   <div class="flex flex-col items-center gap-2 mb-5">
     <p class="text-4xl font-serif text-green-500">Add New Post</p>
     <p class="text-xl text-white">You can add your new posts</p>
   </div>
 
-  <div class="w-full flex mb-12 p-5">
-    <div class="w-[42rem] flex flex-col gap-2">
+  <div class="w-full flex mb-12 p-5 md:flex-row flex-col">
+    <div class="md:w-[42rem] flex flex-col gap-2">
       <label for="title" class="font-sans text-lg text-white">Title</label>
       <mat-form-field
         class="example-form-field bg-white border border-slate-600"
@@ -60,9 +60,10 @@
       <label for="post image" class="font-sans text-lg text-white"
         >Post Image</label
       >
+      <img [src]="imgsrc" class="h-[18rem] object-contain">
       <input
         type="file"
-        class="w-full h-[4.5rem] rounded-md border border-slate-600 bg-white"
+        class="w-full h-[4.5rem] rounded-md border border-slate-600 bg-white" accept="image/*"(change)="showPreview($event)"
       />
     </div>
   </div>
