@@ -10,11 +10,17 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFirestoreModule } from '@angular/fire/compat/firestore/';
 import { CategoriesComponent } from './categories/categories.component';
 import {ToastrModule } from 'ngx-toastr';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AllPostComponent } from './posts/all-post/all-post.component';
 import { NewPostComponent } from './posts/new-post/new-post.component';
 import { AngularMaterialModule } from './angular-material/angular-material.module';
+import { AngularEditorModule } from '@kolkov/angular-editor';
+import { HttpClientModule } from '@angular/common/http';
+
+
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +29,7 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     DashbordComponent,
     CategoriesComponent,
     AllPostComponent,
-    NewPostComponent
+    NewPostComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,8 +39,10 @@ import { AngularMaterialModule } from './angular-material/angular-material.modul
     FormsModule,
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
-    AngularMaterialModule
-
+    AngularMaterialModule,
+    AngularEditorModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
